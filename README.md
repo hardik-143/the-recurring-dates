@@ -16,13 +16,26 @@ npm install the-recurring-dates
 ### Vanilla JS
 
 ```js
-import { generateRecurringDates } from "recurring-dates";
+import { generateRecurringDates } from "the-recurring-dates";
+const dates = generateRecurringDates({
+  /* config */
+});
+
+console.log(dates);
 ```
 
 ### React
 
 ```js
-import { useRecurringDates } from "recurring-dates";
+import { useRecurringDates } from "the-recurring-dates";
+
+function MyComponent() {
+  const dates = useRecurringDates({
+    /* config */
+  });
+
+  return <pre>{JSON.stringify(dates, null, 2)}</pre>;
+}
 ```
 
 ## Via cdn
