@@ -1,15 +1,11 @@
 import moment from "moment";
 
+/**
+ * Validate the config
+ * @param {*} config
+ * @returns {Object} {isValid: boolean, error: string}
+ */
 const validateConfig = (config) => {
-  //  STARTS_ON = null,
-  // ENDS_ON = null,
-  // FREQUENCY = "D",
-  // EVERY_FREQUENCY = 1,
-  // RECURRENCE_WEEK_DAYS = [], // If FREQUENCY is W then this is required
-  // RECURRENCE_MONTH_DATES = [1], // If FREQUENCY is M then this is required
-  // RECURRENCE_YEAR_DAY_OF_WEEK = ["FIRST"],
-  // RECURRENCE_YEAR_WEEK_DAY = ["MON"],
-  // RECURRENCE_YEAR_MONTHS = ["JAN"],
   const {
     STARTS_ON,
     ENDS_ON,

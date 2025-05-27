@@ -1,6 +1,6 @@
 {
   "name": "the-recurring-dates",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "description": "Vanilla JS and React hook for generating recurring dates",
