@@ -45,8 +45,8 @@ npm install the-recurring-dates
 import { generateRecurringDates } from "the-recurring-dates";
 
 const dates = generateRecurringDates({
-  STARTS_ON: "2025-06-01",
-  ENDS_ON: "2025-12-31",
+  STARTS_ON: "01-06-2025",
+  ENDS_ON: "31-06-2025",
   FREQUENCY: "M",
   INTERVAL: 1,
   MONTH_DATES: [1, 15],
@@ -66,7 +66,7 @@ import { useRecurringDates } from "the-recurring-dates";
 function MyComponent() {
   const dates = useRecurringDates({
     STARTS_ON: "01-06-2025",
-    ENDS_ON: "31-12-2025",
+    ENDS_ON: "31-06-2025",
     FREQUENCY: "M",
     INTERVAL: 1,
     MONTH_DATES: [1, 15],
@@ -91,7 +91,8 @@ function MyComponent() {
 <script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.umd.js"></script>
 <script>
   const dates = RecurringDates.getRecurringDates({
-    STARTS_ON: "2025-06-01",
+    STARTS_ON: "01-06-2025",
+    ENDS_ON: "31-06-2025",
     FREQUENCY: "M",
     MONTH_DATES: [1, 15],
   });
