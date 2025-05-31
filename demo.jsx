@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import { useRecurringDates } from "./src/dates/useRecurringDates";
 import { getRecurringDates } from "./src";
 import moment from "moment";
 import { DAYS_OF_WEEK } from "./src/utilities";
@@ -174,22 +173,6 @@ const Demo = () => {
     FORMAT: "YYYY-MM-DD",
   });
   const [dates, setDates] = useState([]);
-  // let month = {
-  //   STARTS_ON: "01-06-2025",
-  //   ENDS_ON: "30-06-2026",
-  //   FREQUENCY: "M",
-  //   INTERVAL: 1,
-  //   MONTH_DATES: [1, 15],
-  //   EXCLUDE_DATES: ["15-08-2025"],
-  // };
-  // let week = {
-  //   STARTS_ON: "01-06-2025",
-  //   ENDS_ON: "31-06-2025",
-  //   FREQUENCY: "W",
-  //   INTERVAL: 1,
-  //   WEEK_DAYS: ["MON", "TUE", "WED"],
-  // };
-  // const dates = useRecurringDates(month);
   return (
     <div>
       <h1>Recurring Dates (React Hook Test)</h1>
