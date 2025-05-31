@@ -10,37 +10,38 @@ const validateConfig = (config) => {
     STARTS_ON,
     ENDS_ON,
     FREQUENCY,
-    INTERVAL,
     MONTH_DATES = [],
     WEEK_ORDINALS = [],
     WEEK_DAYS = [],
     MONTH_NAMES = [],
     EXCLUDE_DATES = [],
+    FORMAT = "DD-MM-YYYY",
   } = config;
 
   if (!STARTS_ON || !ENDS_ON) {
+    let startOfCurrentMonth = moment().startOf("month").format(FORMAT);
+    let endOfCurrentMonth = moment().endOf("month").format(FORMAT);
     return {
       isValid: false,
-      error:
-        "Start Date and End Date are required \nExample: '01-01-2025' and '31-12-2025'",
+      error: `Start Date and End Date are required \nExample: '${startOfCurrentMonth}' and '${endOfCurrentMonth}'`,
     };
   }
 
-  if (!moment(STARTS_ON, "DD-MM-YYYY").isValid()) {
+  if (!moment(STARTS_ON, FORMAT).isValid()) {
     return {
       isValid: false,
       error: "Start Date is not valid Date",
     };
   }
 
-  if (!moment(ENDS_ON, "DD-MM-YYYY").isValid()) {
+  if (!moment(ENDS_ON, FORMAT).isValid()) {
     return {
       isValid: false,
       error: "End Date is not valid Date",
     };
   }
 
-  if (moment(STARTS_ON, "DD-MM-YYYY").isAfter(moment(ENDS_ON, "DD-MM-YYYY"))) {
+  if (moment(STARTS_ON, FORMAT).isAfter(moment(ENDS_ON, FORMAT))) {
     return {
       isValid: false,
       error: "Start Date must be before End Date",
@@ -85,7 +86,7 @@ const validateConfig = (config) => {
 
   if (EXCLUDE_DATES.length > 0) {
     EXCLUDE_DATES.forEach((date) => {
-      if (!moment(date, "DD-MM-YYYY").isValid()) {
+      if (!moment(date, FORMAT).isValid()) {
         return {
           isValid: false,
           error: "Exclude Dates are not valid Dates",

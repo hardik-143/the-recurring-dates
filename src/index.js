@@ -1,2 +1,3 @@
-export { generateRecurringDates } from './core/generateRecurringDates';
-export { useRecurringDates } from './react/useRecurringDates';
+export { generateRecurringDates } from "./core/generateRecurringDates";
+export { useRecurringDates } from "./dates/useRecurringDates";
+export { getRecurringDates } from "./dates/getRecurringDates";

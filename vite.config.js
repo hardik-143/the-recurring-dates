@@ -9,7 +9,7 @@ export default defineConfig({
       name: "TheRecurringDates",
       fileName: (format) => {
         if (format === "es") return "index.esm.js";
-        if (format === "cjs") return "index.js"; // match "main": "dist/index.js"
+        if (format === "cjs") return "index.js";
         return `index.${format}.js`;
       },
       formats: ["es", "cjs", "umd"],
@@ -22,6 +22,11 @@ export default defineConfig({
           "react-dom": "ReactDOM",
         },
       },
+    },
+  },
+  server: {
+    fs: {
+      allow: ["."],
     },
   },
 });

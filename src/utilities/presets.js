@@ -1,21 +1,27 @@
-export const WEEK_DAYS_CODES = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+import moment from "moment";
 
-export const MONTHS = [
-  "JAN",
-  "FEB",
-  "MAR",
-  "APR",
-  "MAY",
-  "JUN",
-  "JUL",
-  "AUG",
-  "SEP",
-  "OCT",
-  "NOV",
-  "DEC",
-];
+/**
+ * FOR WEEK DAYS CODE
+ * @type {string[]}
+ * @description - The weekdays names in the format of MMM
+ */
+export const WEEK_DAYS_CODES = moment
+  .weekdays()
+  .map((day) => day.slice(0, 3).toUpperCase());
 
-// FOR WEEKS IN MONTH
+/**
+ * FOR MONTHS
+ * @type {string[]}
+ * @description - The months names in the format of MMM
+ */
+export const MONTHS = moment
+  .months()
+  .map((month) => month.slice(0, 3).toUpperCase());
+
+/**
+ * FOR WEEKS IN MONTH
+ * @type {string[]}
+ */
 export const DAYS_OF_WEEK = [
   "FIRST",
   "SECOND",

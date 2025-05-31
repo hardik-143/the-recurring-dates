@@ -2,7 +2,7 @@
 
 This package provides:
 
-- ✅ A vanilla JS function `generateRecurringDates`
+- ✅ A vanilla JS function `getRecurringDates`
 - ⚛️ A React hook `useRecurringDates`
 
 Supports flexible recurring patterns like daily, weekly, monthly, and yearly.
@@ -23,17 +23,17 @@ npm install the-recurring-dates
 
 ## ⚙️ Configuration Options
 
-| Option          | Type       | Description                                                                     | Used In Frequency |
-| --------------- | ---------- | ------------------------------------------------------------------------------- | ----------------- |
-| `STARTS_ON`     | `string`   | Start date of the recurrence (`YYYY-MM-DD`)                                     | All               |
-| `ENDS_ON`       | `string`   | End date of the recurrence (`YYYY-MM-DD`)                                       | All               |
-| `FREQUENCY`     | `string`   | Recurrence type: `"D"` (daily), `"W"` (weekly), `"M"` (monthly), `"Y"` (yearly) | All               |
-| `INTERVAL`      | `number`   | Every X units of the frequency (e.g., every 2 weeks)                            | All               |
-| `MONTH_DATES`   | `number[]` | Dates of the month to include (for monthly/yearly)                              | M                 |
-| `WEEK_DAYS`     | `string[]` | Days of the week: `"MON"`, `"TUE"`, `"WED"`, etc.                               | W, Y              |
-| `WEEK_ORDINALS` | `string[]` | Week ordinals: `"FIRST"`, `"SECOND"`, `"THIRD"`, `"FOURTH"`, `"LAST"`           | Y                 |
-| `MONTH_NAMES`   | `string[]` | Month names for yearly recurrence                                               | Y                 |
-| `EXCLUDE_DATES` | `string[]` | Dates to exclude from the result                                                | All               |
+| Option          | Type       | Description                                                                     |
+| --------------- | ---------- | ------------------------------------------------------------------------------- |
+| `STARTS_ON`     | `string`   | Start date of the recurrence (`DD-MM-YYYY`)                                     |
+| `ENDS_ON`       | `string`   | End date of the recurrence (`DD-MM-YYYY`)                                       |
+| `FREQUENCY`     | `string`   | Recurrence type: `"D"` (daily), `"W"` (weekly), `"M"` (monthly), `"Y"` (yearly) |
+| `INTERVAL`      | `number`   | Every X units of the frequency (e.g., every 2 weeks)                            |
+| `MONTH_DATES`   | `number[]` | Dates of the month to include (for monthly/yearly)                              |
+| `WEEK_DAYS`     | `string[]` | Days of the week: `"MON"`, `"TUE"`, `"WED"`, etc.                               |
+| `WEEK_ORDINALS` | `string[]` | Week ordinals: `"FIRST"`, `"SECOND"`, `"THIRD"`, `"FOURTH"`, `"LAST"`           |
+| `EXCLUDE_DATES` | `string[]` | Dates to exclude from the result                                                |
+| `FORMAT`        | `string`   | Input Date format                                                               |
 
 ---
 
@@ -65,10 +65,12 @@ import { useRecurringDates } from "the-recurring-dates";
 
 function MyComponent() {
   const dates = useRecurringDates({
-    STARTS_ON: "2025-06-01",
-    FREQUENCY: "W",
+    STARTS_ON: "01-06-2025",
+    ENDS_ON: "31-12-2025",
+    FREQUENCY: "M",
     INTERVAL: 1,
-    WEEK_DAYS: ["MON", "WED"],
+    MONTH_DATES: [1, 15],
+    EXCLUDE_DATES: ["15-08-2025"],
   });
 
   return (
@@ -88,7 +90,7 @@ function MyComponent() {
 ```html
 <script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.umd.js"></script>
 <script>
-  const dates = RecurringDates.generateRecurringDates({
+  const dates = RecurringDates.getRecurringDates({
     STARTS_ON: "2025-06-01",
     FREQUENCY: "M",
     MONTH_DATES: [1, 15],
@@ -146,20 +148,15 @@ Before submitting a PR:
 - Ensure code coverage is maintained
 - Test in different environments if applicable
 
-
-
 ## 📘 License
 
 This project is licensed under the MIT License - see the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
-
 
 ## 🔗 Links
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://thehardik.in//)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/thehardik143/)
 [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/__thehardik/)
-
-
 
 ## 📦 NPM Stats
 
