@@ -88,7 +88,7 @@ function MyComponent() {
 ### 🌐 Use via CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.js"></script>
 <script>
   const dates = RecurringDates.getRecurringDates({
     STARTS_ON: "01-06-2025",

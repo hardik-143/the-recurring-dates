@@ -5,24 +5,13 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: "src/index.js",
+      outDir: "dist/unminified",
+      entry: "src/core/generateRecurringDates.js",
       name: "TheRecurringDates",
-      fileName: (format) => {
-        if (format === "es") return "index.esm.js";
-        if (format === "cjs") return "index.js";
-        return `index.${format}.js`;
-      },
-      formats: ["es", "cjs", "umd"],
+      fileName: () => "index.js",
+      formats: ["umd"],
     },
-    rollupOptions: {
-      external: ["react", "react-dom"],
-      output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-        },
-      },
-    },
+    //  minify: false, // no minify
   },
   server: {
     fs: {
