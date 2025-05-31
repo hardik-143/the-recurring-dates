@@ -50,3 +50,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Demo Application Added
 ## Added FORMAT option in README.md
+
+
+## [1.0.4] - 2024-05-231
+
+### Code Improvements and Bug Fixes

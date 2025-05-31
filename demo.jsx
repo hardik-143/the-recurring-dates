@@ -255,9 +255,7 @@ const Demo = () => {
         <div>
           <button
             onClick={() => {
-              console.log("config ==>", config);
               let dates = getRecurringDates(config);
-              console.log("dates ==>", dates);
               setDates(dates);
             }}
           >

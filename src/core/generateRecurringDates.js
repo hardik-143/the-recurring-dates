@@ -103,7 +103,6 @@ export const generateRecurringDates = (config) => {
     if (INTERVAL === 1) {
       let _monthDates = [];
       while (startDate.isSameOrBefore(endDate)) {
-        console.log("000 ==>", startDate.format("DD"), MONTH_DATES);
         let isDateInSelection = MONTH_DATES.includes(
           parseInt(startDate.format("DD"))
         );
@@ -170,9 +169,7 @@ export const generateRecurringDates = (config) => {
 
     // Dates Creation
     if (INTERVAL === 1) {
-      // console.log("INTERVAL ==>", INTERVAL);
       let _yearMonthsDates = [];
-      console.log("startDate ==>", startDate, endDate);
       while (startDate.isSameOrBefore(endDate)) {
         let isMonthInSelection = MONTH_NAMES.includes(
           startDate.format("MMM").toUpperCase()
@@ -190,7 +187,6 @@ export const generateRecurringDates = (config) => {
               let isDateInMonth =
                 moment(_date, FORMAT).month() === startDate.month();
               if (isDateInMonth) {
-                console.log("isDateInMonth", _date, _startDateSTR, _endDateSTR);
                 if (isDateBetween(_date, _startDateSTR, _endDateSTR, FORMAT)) {
                   _yearMonthsDates.push(_date);
                 }
@@ -204,7 +200,6 @@ export const generateRecurringDates = (config) => {
                     .endOf("month")
                     .day(weekDayName);
                   _date = lastWeekDay.format(FORMAT);
-                  // console.log('lastWeekDay',_date, startDate, endDate);
                   if (
                     isDateBetween(_date, _startDateSTR, _endDateSTR, FORMAT)
                   ) {
