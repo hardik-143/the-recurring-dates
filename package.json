@@ -1,9 +1,18 @@
 {
   "name": "the-recurring-dates",
-  "version": "1.0.6",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "version": "1.0.7",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
   "description": "Vanilla JS and React hook for generating recurring dates",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -15,9 +24,11 @@
     "react": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
     "@vitejs/plugin-react": "^4.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "tailwindcss": "^4.1.11",
     "vite": "^5.0.0"
   },
   "dependencies": {

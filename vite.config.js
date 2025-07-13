@@ -1,17 +1,36 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from '@tailwindcss/vite'
+
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
+  // build: {
+  //   lib: {
+  //     outDir: "dist",
+  //     entry: "src/core/generateRecurringDates.js",
+  //     name: "TheRecurringDates",
+  //     fileName: () => "index.js",
+  //     formats: ["umd"],
+  //   },
+  //   //  minify: false, // no minify
+  // },
   build: {
     lib: {
-      outDir: "dist/unminified",
-      entry: "src/core/generateRecurringDates.js",
+      entry: "src/index.js",
       name: "TheRecurringDates",
-      fileName: () => "index.js",
-      formats: ["umd"],
+      formats: ["es", "umd"],
+      fileName: (format) => `index.${format}.js`,
     },
-    //  minify: false, // no minify
+    sourcemap: true,
+    rollupOptions: {
+      external: ["react"],
+      output: {
+        globals: {
+          react: "React",
+        },
+      },
+    },
   },
   server: {
     fs: {

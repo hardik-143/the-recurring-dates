@@ -21,6 +21,119 @@ npm install the-recurring-dates
 
 ---
 
+## 📦 Module Formats
+
+This package supports both **ES Modules** and **UMD** formats:
+
+### ES Modules (Recommended)
+
+```javascript
+// Modern bundlers (Webpack, Vite, Rollup, etc.)
+import {
+  generateRecurringDates,
+  useRecurringDates,
+  getRecurringDates,
+} from "the-recurring-dates";
+```
+
+### UMD (Universal Module Definition)
+
+```javascript
+// Browser (via CDN) or older bundlers
+<script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.umd.js"></script>
+<script>
+  const { generateRecurringDates, useRecurringDates, getRecurringDates } = TheRecurringDates;
+</script>
+```
+
+### Direct Import (ES Modules)
+
+```javascript
+// Direct import from specific format
+import { generateRecurringDates } from "the-recurring-dates/dist/index.es.js";
+```
+
+### 📁 Available Files
+
+| File                    | Format     | Use Case                      |
+| ----------------------- | ---------- | ----------------------------- |
+| `dist/index.es.js`      | ES Module  | Modern bundlers, tree-shaking |
+| `dist/index.umd.js`     | UMD        | Browser CDN, older bundlers   |
+| `dist/index.es.js.map`  | Source Map | Debugging ES module           |
+| `dist/index.umd.js.map` | Source Map | Debugging UMD                 |
+
+### 🔧 Build Tools Integration
+
+**Webpack/Vite/Rollup (ES Modules):**
+
+```javascript
+import { generateRecurringDates } from "the-recurring-dates";
+```
+
+**Browserify (UMD):**
+
+```javascript
+const { generateRecurringDates } = require("the-recurring-dates");
+```
+
+**Parcel (Auto-detection):**
+
+```javascript
+import { generateRecurringDates } from "the-recurring-dates";
+```
+
+### 🌐 Browser Compatibility
+
+| Format     | Browser Support           | Use Case                  |
+| ---------- | ------------------------- | ------------------------- |
+| ES Modules | Modern browsers (ES2015+) | Modern web apps, bundlers |
+| UMD        | All browsers (ES5+)       | Legacy support, CDN usage |
+
+### 📦 Bundle Size
+
+- **ES Module**: ~45KB (gzipped: ~15KB)
+- **UMD**: ~50KB (gzipped: ~17KB)
+
+_Note: Bundle size includes moment.js dependency_
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**1. Import/Export Errors**
+
+```javascript
+// ❌ Wrong - old format
+import { generateRecurringDates } from "the-recurring-dates/dist/index.js";
+
+// ✅ Correct - new format
+import { generateRecurringDates } from "the-recurring-dates";
+```
+
+**2. CDN Usage**
+
+```javascript
+// ❌ Wrong - old CDN path
+<script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.js"></script>
+
+// ✅ Correct - new CDN path
+<script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.umd.js"></script>
+```
+
+**3. React Hook in UMD**
+
+```javascript
+// ❌ Wrong - React hook doesn't work in UMD
+const { useRecurringDates } = TheRecurringDates;
+
+// ✅ Correct - Use ES modules for React
+import { useRecurringDates } from "the-recurring-dates";
+```
+
+---
+
 ## ⚙️ Configuration Options
 
 | Option          | Type       | Description                                                                     |
@@ -38,25 +151,6 @@ npm install the-recurring-dates
 ---
 
 ## 🚀 Usage
-
-### 🔧 Vanilla JS
-
-```js
-import { generateRecurringDates } from "the-recurring-dates";
-
-const dates = generateRecurringDates({
-  STARTS_ON: "01-06-2025",
-  ENDS_ON: "31-06-2025",
-  FREQUENCY: "M",
-  INTERVAL: 1,
-  MONTH_DATES: [1, 15],
-  EXCLUDE_DATES: ["2025-08-15"],
-});
-
-console.log(dates);
-```
-
----
 
 ### ⚛️ React Hook
 
@@ -85,12 +179,32 @@ function MyComponent() {
 
 ---
 
-### 🌐 Use via CDN
+### 🌐 Use via CDN (UMD)
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.umd.js"></script>
 <script>
-  const dates = RecurringDates.getRecurringDates({
+  const { generateRecurringDates, useRecurringDates, getRecurringDates } =
+    TheRecurringDates;
+
+  const dates = getRecurringDates({
+    STARTS_ON: "01-06-2025",
+    ENDS_ON: "31-06-2025",
+    FREQUENCY: "M",
+    MONTH_DATES: [1, 15],
+  });
+
+  console.log(dates);
+</script>
+```
+
+### 📦 ES Modules via CDN
+
+```html
+<script type="module">
+  import { generateRecurringDates } from "https://cdn.jsdelivr.net/npm/the-recurring-dates/dist/index.es.js";
+
+  const dates = generateRecurringDates({
     STARTS_ON: "01-06-2025",
     ENDS_ON: "31-06-2025",
     FREQUENCY: "M",
