@@ -5,16 +5,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  // build: {
-  //   lib: {
-  //     outDir: "dist",
-  //     entry: "src/core/generateRecurringDates.js",
-  //     name: "TheRecurringDates",
-  //     fileName: () => "index.js",
-  //     formats: ["umd"],
-  //   },
-  //   //  minify: false, // no minify
-  // },
   build: {
     lib: {
       entry: "src/index.js",
